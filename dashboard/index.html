@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>لوحة أداء التسويق — متجر بتلة للورد والهدايا | مرسى ديجيتال</title>
+<meta name="description" content="لوحة تفاعلية لأداء التسويق الرقمي لمتجر بتلة للورد والهدايا في الرياض: الإنفاق والمبيعات والعائد على الإنفاق حسب القناة والحملة. مشروع تطبيقي من مرسى ديجيتال ببيانات توضيحية وليست لعميل حقيقي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f3f1; --bg-2:#efebe8; --card:#ffffff; --card-2:#faf8f7; --line:#e6dfdb; --line-2:#f0ebe8;
+  --ink:#1e181b; --ink-2:#5a5055; --ink-3:#857a80;
+  --accent:#a31d4f; --accent-ink:#8c1643; --accent-soft:#fbe9f0; --accent-line:#f0c4d5; --on-accent:#ffffff;
+  --spend:#4d5563;
+  --good:#18794e; --good-bg:#e3f4ea; --bad:#c22f3d; --bad-bg:#fde8ea; --warn:#8a5a00; --warn-bg:#fdf0d0;
+  --c-snap:#eda100; --c-tiktok:#4a3aa7; --c-insta:#eb6834; --c-google:#2a78d6; --c-wa:#1baf7a;
+  --shadow:0 1px 2px rgba(40,20,30,.04),0 8px 24px -16px rgba(40,20,30,.12);
+  --f-body:"IBM Plex Sans Arabic","Segoe UI","Tahoma","Geeza Pro","Noto Sans Arabic",system-ui,sans-serif;
+  --f-head:"Readex Pro","Noto Kufi Arabic","IBM Plex Sans Arabic","Segoe UI","Tahoma",system-ui,sans-serif;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#141013; --bg-2:#1a1518; --card:#1e191c; --card-2:#241e22; --line:#332b30; --line-2:#2a2327;
+  --ink:#f5eff2; --ink-2:#c2b7bd; --ink-3:#93878d;
+  --accent:#ee6f9b; --accent-ink:#f590b2; --accent-soft:#3a1c29; --accent-line:#5c2a3f; --on-accent:#1b0c13;
+  --spend:#a9b1bf;
+  --good:#5fd39a; --good-bg:#173326; --bad:#ff8791; --bad-bg:#3d1c21; --warn:#f0bf55; --warn-bg:#3a2d12;
+  --c-snap:#c98500; --c-tiktok:#9085e9; --c-insta:#d95926; --c-google:#3987e5; --c-wa:#199e70;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent-ink)}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.wrap{max-width:1360px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* header */
+.top{border-bottom:1px solid var(--line);background:var(--card)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.agency{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--f-head);font-weight:700;font-size:17px}
+.agency svg{width:30px;height:30px;flex:none}
+.agency small{display:block;font-family:var(--f-body);font-weight:400;font-size:11.5px;color:var(--ink-3);line-height:1.2}
+.top-actions{display:flex;align-items:center;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:var(--warn-bg);color:var(--warn);font-size:12.5px;font-weight:600;white-space:nowrap;border:1px solid color-mix(in srgb,var(--warn) 25%,transparent)}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.theme-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid var(--line);background:var(--card);border-radius:10px;font-size:13px;font-weight:500;color:var(--ink-2)}
+.theme-btn:hover{border-color:var(--ink-3);color:var(--ink)}
+.theme-btn svg{width:17px;height:17px}
+
+.hero{padding:30px 0 6px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.eyebrow{display:flex;align-items:center;gap:8px;color:var(--accent-ink);font-weight:600;font-size:13px;margin-bottom:6px}
+.eyebrow svg{width:18px;height:18px}
+h1{font-family:var(--f-head);font-size:30px;line-height:1.35;font-weight:700;letter-spacing:0}
+h1 span{color:var(--ink-3);font-weight:500}
+.hero p{color:var(--ink-2);font-size:14px;margin-top:6px;max-width:62ch}
+.range-note{font-size:13px;color:var(--ink-2);text-align:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;line-height:1.7}
+.range-note b{display:block;color:var(--ink);font-weight:600;font-size:14px}
+
+/* filters */
+.filters{margin:20px 0 20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:14px 28px;flex-wrap:wrap;align-items:center;box-shadow:var(--shadow)}
+.fgroup{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+.flabel{font-size:12.5px;color:var(--ink-3);font-weight:500;white-space:nowrap}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg-2);padding:4px;border-radius:11px}
+.seg button{border:0;background:transparent;padding:6px 13px;border-radius:8px;font-size:13.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--accent-ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg .sep{width:1px;background:var(--line);margin:5px 3px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);padding:5px 12px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-3);white-space:nowrap}
+.chip i{width:10px;height:10px;border-radius:3px;background:var(--ink-3);opacity:.35;flex:none}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:var(--ink-3);background:var(--card-2)}
+.chip[aria-pressed="true"] i{background:var(--c);opacity:1}
+.chip.all{border-style:dashed}
+.chip.all[aria-pressed="true"]{border-style:solid;color:var(--accent-ink);border-color:var(--accent-line);background:var(--accent-soft)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);min-width:0}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.card-h h2{font-family:var(--f-head);font-size:17px;font-weight:600;line-height:1.5}
+.card-h p{font-size:13px;color:var(--ink-3);margin-top:1px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c5{grid-column:span 5}.c4{grid-column:span 4}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow);min-width:0;display:flex;flex-direction:column}
+.kpi-l{font-size:13px;color:var(--ink-2);font-weight:500;display:flex;justify-content:space-between;gap:6px;align-items:baseline}
+.kpi-l em{font-style:normal;font-size:11px;color:var(--ink-3);font-weight:400;white-space:nowrap}
+.kpi-v{font-family:var(--f-head);font-size:27px;font-weight:600;line-height:1.4;margin-top:4px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kpi-v small{font-family:var(--f-body);font-size:13px;font-weight:500;color:var(--ink-3);margin-inline-start:4px}
+.delta{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:999px;font-variant-numeric:tabular-nums}
+.delta.good{color:var(--good);background:var(--good-bg)}
+.delta.bad{color:var(--bad);background:var(--bad-bg)}
+.delta.flat{color:var(--ink-2);background:var(--bg-2)}
+.delta .ar{font-size:9px;line-height:1}
+.kpi-d{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px;font-size:11.5px;color:var(--ink-3)}
+.spark{margin-top:10px;height:34px;width:100%;display:block;direction:ltr}
+
+/* legend */
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:14px;height:3px;border-radius:2px;background:var(--c);flex:none}
+.legend i.area{height:10px;border-radius:3px}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--c) 0 4px,transparent 4px 7px)}
+
+svg.chart{display:block;width:100%;direction:ltr;overflow:visible;font-family:var(--f-body)}
+svg.chart text{font-size:12px;fill:var(--ink-3);font-variant-numeric:tabular-nums}
+svg.chart text.strong{fill:var(--ink);font-weight:600}
+svg.chart text.mid{fill:var(--ink-2)}
+svg.chart text.halo{paint-order:stroke;stroke:var(--card);stroke-width:5px;stroke-linejoin:round}
+.chart-box{position:relative;touch-action:pan-y}
+.tip{position:absolute;top:0;left:0;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:0 10px 30px -10px rgba(0,0,0,.35);font-size:12.5px;min-width:176px;opacity:0;transition:opacity .12s;z-index:5}
+.tip.on{opacity:1}
+.tip b{display:block;font-size:13px;margin-bottom:6px;font-weight:600}
+.tip div{display:flex;justify-content:space-between;gap:16px;color:var(--ink-2);line-height:1.8}
+.tip div span:first-child{display:inline-flex;align-items:center;gap:6px}
+.tip div i{width:9px;height:9px;border-radius:2px;background:var(--c)}
+.tip div strong{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* insights */
+.insights{background:linear-gradient(180deg,var(--accent-soft),var(--card) 55%);border-color:var(--accent-line)}
+.insights .card-h h2{color:var(--accent-ink)}
+.ins-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ins-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;line-height:1.75;color:var(--ink)}
+.ins-list .tag{font-size:11.5px;font-weight:600;color:var(--accent-ink);background:var(--card);border:1px solid var(--accent-line);border-radius:7px;padding:1px 8px;height:fit-content;margin-top:3px;white-space:nowrap}
+.ins-list b{font-weight:600}
+.ins-foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--accent-line);font-size:12px;color:var(--ink-3)}
+
+/* tables */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 10px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line-2)}
+th:first-child,td:first-child{text-align:right;padding-inline-start:0}
+th:last-child,td:last-child{padding-inline-end:0}
+thead th{font-size:12px;font-weight:500;color:var(--ink-3);border-bottom:1px solid var(--line);padding-top:6px;padding-bottom:8px}
+thead th button{border:0;background:none;padding:2px 0;font-weight:500;color:var(--ink-3);display:inline-flex;align-items:center;gap:4px;flex-direction:row-reverse}
+thead th:first-child button{flex-direction:row}
+thead th button:hover{color:var(--ink)}
+thead th[aria-sort] button{color:var(--accent-ink);font-weight:600}
+thead th button .sa{font-size:9px;opacity:.35;width:8px;display:inline-block}
+thead th[aria-sort] button .sa{opacity:1}
+tbody tr:hover td{background:var(--card-2)}
+tbody tr:last-child td{border-bottom:0}
+tfoot td{font-weight:600;border-bottom:0;border-top:1px solid var(--line);background:var(--card-2)}
+tfoot td:first-child{padding-inline-start:10px;border-radius:0 10px 10px 0}
+tfoot td:last-child{padding-inline-end:10px;border-radius:10px 0 0 10px}
+.chn{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.chn i{width:10px;height:10px;border-radius:3px;background:var(--c);flex:none}
+.dim{color:var(--ink-3)}
+.tnote{font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.7}
+.camp{display:flex;flex-direction:column;line-height:1.45}
+.camp small{color:var(--ink-3);font-size:11.5px;display:inline-flex;align-items:center;gap:6px}
+.camp small i{width:8px;height:8px;border-radius:2px;background:var(--c)}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:999px}
+.st i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.st.scale{color:var(--good);background:var(--good-bg)}
+.st.watch{color:var(--warn);background:var(--warn-bg)}
+.st.stop{color:var(--bad);background:var(--bad-bg)}
+.rules{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--ink-2);align-items:center}
+.rules>span{display:inline-flex;align-items:center;gap:8px}
+.empty{padding:28px 0;text-align:center;color:var(--ink-3);font-size:14px}
+
+footer{margin-top:28px;border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-2);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer a{font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent-line);padding-bottom:1px}
+footer a:hover{border-color:currentColor}
+
+@media (max-width:1180px){
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .c8,.c7,.c5,.c4{grid-column:span 12}
+}
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .wrap{padding:0 14px}
+  .top .wrap{height:auto;padding-top:10px;padding-bottom:10px;flex-wrap:wrap;gap:8px}
+  .agency{font-size:15.5px}
+  .agency small{display:none}
+  .theme-btn span{display:none}
+  .theme-btn{padding:0 10px}
+  .pill{font-size:11.5px;padding:4px 10px}
+  .hero{padding-top:20px}
+  h1{font-size:22px}
+  h1 span{display:block;font-size:17px}
+  .range-note{width:100%}
+  .filters{padding:12px;gap:12px;margin:16px 0}
+  .fgroup{width:100%;align-items:flex-start;flex-direction:column;gap:6px}
+  .seg{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+  .seg button{padding:7px 4px;font-size:13px}
+  .seg .sep{display:none}
+  .chip{padding:5px 10px;font-size:13px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .kpi{padding:12px 12px 10px;border-radius:14px}
+  .kpi-v{font-size:21px}
+  .kpi-v small{font-size:11.5px}
+  .kpi-l em{display:none}
+  .grid{gap:12px;margin-bottom:12px}
+  .card{padding:16px 14px;border-radius:14px}
+  .tscroll{margin:0 -14px;padding:0 14px}
+  .ins-list li{grid-template-columns:1fr;gap:3px}
+  .ins-list .tag{width:fit-content}
+  footer .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="agency" href="/" aria-label="مرسى ديجيتال — الصفحة الرئيسية">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M7 20c2.2 0 2.2 2 4.5 2s2.3-2 4.5-2 2.2 2 4.5 2 2.3-2 4.5-2" fill="none" stroke="var(--on-accent)" stroke-width="2" stroke-linecap="round"/><path d="M16 8v8M12 11h8" fill="none" stroke="var(--on-accent)" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>مرسى ديجيتال<small>تسويق رقمي بالأرقام</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="pill"><i></i>مشروع تطبيقي · بيانات توضيحية</span>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="تبديل الوضع الفاتح والداكن">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+        <span id="themeTxt"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2.6 2 4 4.3 4 7 0 2.2-1.6 4-4 4s-4-1.8-4-4c0-2.7 1.4-5 4-7z" fill="currentColor" opacity=".9"/><path d="M5 11c0 4.4 3 7.5 7 7.500s7-3.1 7-7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 18.500V22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        متجر بتلة للورد والهدايا · الرياض
+      </div>
+      <h1>لوحة أداء التسويق <span>— متجر بتلة للورد والهدايا</span></h1>
+      <p>متابعة يومية للإنفاق الإعلاني والمبيعات عبر خمس قنوات. «بتلة» علامة افتراضية، وكل الأرقام هنا توضيحية لغرض عرض طريقة العمل.</p>
+    </div>
+    <div class="range-note" id="rangeNote" aria-live="polite"></div>
+  </section>
+
+  <section class="filters" aria-label="عوامل التصفية">
+    <div class="fgroup">
+      <span class="flabel">الفترة</span>
+      <div class="seg" id="periods" role="group" aria-label="اختيار الفترة"></div>
+    </div>
+    <div class="fgroup">
+      <span class="flabel">القنوات</span>
+      <div class="chips" id="chips" role="group" aria-label="اختيار القنوات"></div>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis" aria-label="المؤشرات الرئيسية"></section>
+
+  <div class="grid">
+    <section class="card c8">
+      <div class="card-h">
+        <div><h2>المبيعات مقابل الإنفاق يوميًا</h2><p>بالريال السعودي · مرّر المؤشر أو المس الرسم لقراءة أي يوم</p></div>
+        <div class="legend">
+          <span><i class="area" style="--c:var(--accent)"></i>المبيعات</span>
+          <span><i class="dash" style="--c:var(--spend)"></i>الإنفاق الإعلاني</span>
+        </div>
+      </div>
+      <div class="chart-box" id="mainBox">
+        <svg class="chart" id="mainChart" role="img" aria-label="رسم خطي للمبيعات والإنفاق اليومي"></svg>
+        <div class="tip" id="tip" role="status"></div>
+      </div>
+    </section>
+
+    <section class="card c4 insights">
+      <div class="card-h"><div><h2>قراءة مرسى</h2><p>ملخص يُكتب آليًا من الأرقام المعروضة الآن</p></div></div>
+      <ul class="ins-list" id="insights" aria-live="polite"></ul>
+      <p class="ins-foot">الملخص مبني على قواعد حسابية واضحة فوق بيانات توضيحية، وليس توصية لعميل فعلي.</p>
+    </section>
+  </div>
+
+  <div class="grid">
+    <section class="card c4">
+      <div class="card-h"><div><h2>العائد على الإنفاق حسب القناة</h2><p>ريال مبيعات لكل ريال إعلان</p></div></div>
+      <svg class="chart" id="roasChart" role="img" aria-label="أعمدة أفقية للعائد على الإنفاق حسب القناة"></svg>
+    </section>
+    <section class="card c8">
+      <div class="card-h"><div><h2>مقارنة القنوات</h2><p>اضغط على عنوان أي عمود لإعادة الترتيب · المبالغ بالريال السعودي</p></div></div>
+      <div class="tscroll"><table id="chTable"><thead></thead><tbody></tbody><tfoot></tfoot></table></div>
+      <p class="tnote">واتساب/مباشر بدون إنفاق إعلاني، لذلك لا يُحسب له عائد ولا تكلفة طلب، وإجمالي العائد وتكلفة الطلب محسوبان على القنوات المدفوعة فقط. «النقرات» في واتساب/مباشر تعني المحادثات والزيارات المباشرة.</p>
+    </section>
+  </div>
+
+  <div class="grid">
+    <section class="card c4">
+      <div class="card-h"><div><h2>قمع التحويل</h2><p>من الظهور إلى الطلب · عرض الأشرطة بمقياس لوغاريتمي</p></div></div>
+      <svg class="chart" id="funnel" role="img" aria-label="قمع التحويل من الظهور إلى الطلب"></svg>
+    </section>
+    <section class="card c8">
+      <div class="card-h"><div><h2>أعلى ٨ حملات إنفاقًا</h2><p>الحالة تُحدَّد آليًا من عائد الحملة وتكلفة طلبها في الفترة المختارة</p></div></div>
+      <div class="tscroll"><table id="cpTable"><thead></thead><tbody></tbody></table></div>
+      <div class="rules" id="rules"></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>لوحة تطبيقية من تنفيذ مرسى ديجيتال، الأرقام توضيحية وليست لعميل حقيقي.</span>
+    <a href="/">موقع مرسى ديجيتال</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- helpers ---------- */
+var AR='٠١٢٣٤٥٦٧٨٩';
+function toAr(s){return String(s).replace(/\d/g,function(d){return AR[+d]}).replace(/,/g,'٬').replace(/\./g,'٫')}
+function grp(n,d){return n.toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})}
+function fInt(n){return toAr(grp(Math.round(n),0))}
+function fDec(n,d){return toAr(grp(n,d==null?1:d))}
+function fPct(x,d){return toAr((x*100).toFixed(d==null?1:d))+'٪\u200F'}
+function fRoasTxt(r){return r==null?'—':fDec(r,1)+'×'}
+function fRoas(r){return r==null?'<span class="dim">—</span>':'<span dir="ltr" class="num">'+fDec(r,1)+'×</span>'}
+function fMoney(n){return n==null?'—':fInt(n)}
+function fCompact(n){
+  if(n>=1e6)return fDec(n/1e6,n>=1e7?1:2)+' مليون';
+  if(n>=1e4)return fDec(n/1e3,1)+' ألف';
+  return fInt(n);
+}
+function fAxis(n){return n>=1000?toAr(String(+(n/1000).toFixed(1)))+' ألف':fInt(n)}
+function div(a,b){return b>0?a/b:null}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function $(id){return document.getElementById(id)}
+function cssVar(n){return 'var(--'+n+')'}
+function rtl(s){return '\u2067'+s+'\u2069'}            // RTL isolate for mixed labels inside LTR svg
+function ltrIso(s){return '\u2066'+s+'\u2069'}
+
+/* ---------- seeded PRNG ---------- */
+var SEED=20260801;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var rnd=mulberry32(SEED);
+function randn(){var u=0,v=0;while(u===0)u=rnd();v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+function poisson(l){if(l<=0)return 0;var L=Math.exp(-l),k=0,p=1;do{k++;p*=rnd()}while(p>L&&k<400);return k-1}
+
+/* ---------- calendar ---------- */
+var MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+var WDAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+var DAY=86400000, VIS=90, PRE=90, N=VIS+PRE;
+var START=Date.UTC(2026,7,1)-PRE*DAY;          // 90 baseline days before 1 Aug 2026 (comparison only)
+var dates=[];for(var i=0;i<N;i++)dates.push(new Date(START+i*DAY));
+function fDate(i,withW){var d=dates[i];return (withW?WDAYS[d.getUTCDay()]+' ':'')+toAr(d.getUTCDate())+' '+MONTHS[d.getUTCMonth()]}
+function idxOf(m,d){return Math.round((Date.UTC(2026,m,d)-START)/DAY)}
+var NAT=idxOf(8,23);
+
+/* ---------- channels & campaigns ---------- */
+var CH=[
+  {id:'snap',  name:'سناب شات',        short:'سناب',     color:'c-snap',  paid:true},
+  {id:'tiktok',name:'تيك توك',         short:'تيك توك',  color:'c-tiktok',paid:true},
+  {id:'insta', name:'إنستقرام (ميتا)', short:'إنستقرام', color:'c-insta', paid:true},
+  {id:'google',name:'قوقل (بحث)',      short:'قوقل',     color:'c-google',paid:true},
+  {id:'wa',    name:'واتساب/مباشر',    short:'واتساب/مباشر',color:'c-wa', paid:false}
+];
+var CHI={};CH.forEach(function(c,i){CHI[c.id]=i});
+// spend: SAR/day base · cpm SAR · ctr · cvr · aov SAR
+var CP=[
+  {ch:'snap',  name:'باقات يومية · سناب',                    spend:118,cpm:13,  ctr:.0100,cvr:.0180,aov:240},
+  {ch:'snap',  name:'إعادة استهداف زوار المتجر · سناب',      spend:62, cpm:20,  ctr:.0150,cvr:.0300,aov:265},
+  {ch:'snap',  name:'باقات اليوم الوطني · سناب',             spend:150,cpm:15,  ctr:.0130,cvr:.0250,aov:290,from:idxOf(8,10),to:idxOf(8,24)},
+  {ch:'tiktok',name:'فيديو تنسيق الباقات · تيك توك',         spend:100,cpm:8.5, ctr:.0170,cvr:.0064,aov:215},
+  {ch:'tiktok',name:'تحدي الهدية المفاجئة · تيك توك',        spend:54, cpm:9,   ctr:.0150,cvr:.0042,aov:200},
+  {ch:'insta', name:'ريلز هدايا المواليد · إنستقرام',        spend:92, cpm:22,  ctr:.0110,cvr:.0240,aov:320},
+  {ch:'insta', name:'كاروسيل باقات المناسبات · إنستقرام',    spend:72, cpm:24,  ctr:.0130,cvr:.0215,aov:280},
+  {ch:'insta', name:'إعادة استهداف السلة المتروكة · ميتا',   spend:40, cpm:30,  ctr:.0190,cvr:.0360,aov:290},
+  {ch:'google',name:'بحث «توصيل ورد الرياض» · قوقل',        spend:60, cpm:156, ctr:.0600,cvr:.0600,aov:300},
+  {ch:'google',name:'بحث اسم العلامة «بتلة» · قوقل',         spend:18, cpm:198, ctr:.1800,cvr:.0450,aov:310},
+  {ch:'wa',    name:'واتساب/مباشر',                          spend:0,  imp:430, ctr:.0900,cvr:.0850,aov:305}
+];
+var WK=[0.90,0.88,0.90,0.96,1.22,1.32,1.04];               // Sun..Sat — Thu/Fri peak
+var NATF={'-5':1.15,'-4':1.3,'-3':1.5,'-2':1.8,'-1':2.3,'0':2.7,'1':1.25};
+function drift(ch,t){return ch==='tiktok'?1.16-0.30*t:ch==='google'?0.92+0.16*t:1}
+
+/* DATA[campaign][day] = [spend, impressions, clicks, addToCart, orders, revenue] */
+var F=6, DATA=CP.map(function(){return new Float64Array(N*F)});
+(function generate(){
+  for(var d=0;d<N;d++){
+    var t=d/(N-1), W=WK[dates[d].getUTCDay()], Nf=NATF[d-NAT]||1, peak=W*Nf, T=0.86+0.24*t;
+    for(var c=0;c<CP.length;c++){
+      var p=CP[c], o=d*F, A=DATA[c];
+      // draw the same count of randoms for every cell so the stream stays stable
+      var r1=randn(),r2=randn(),r3=randn(),r4=randn();
+      if(p.from!=null&&(d<p.from||d>p.to))continue;
+      var spend=0,imp;
+      if(p.spend>0){
+        spend=Math.round(p.spend*(1+0.45*(peak-1))*(0.93+0.14*t)*(1+0.08*r1));
+        var cpm=p.cpm*(1+0.06*r2)*(1+0.12*(Nf-1));
+        imp=Math.round(spend/cpm*1000);
+      }else{
+        imp=Math.round(p.imp*peak*T*(1+0.10*r1));
+      }
+      var clicks=Math.round(imp*p.ctr*(1+0.07*r3));
+      var cvr=p.cvr*(1+0.30*(W-1))*(1+0.22*(Nf-1))*drift(p.ch,t)*(p.spend>0?T/0.98:1)*(1+0.10*r4);
+      var orders=Math.min(clicks,poisson(clicks*cvr)), rev=0;
+      for(var k=0;k<orders;k++)rev+=Math.round(p.aov*(1+0.05*(Nf-1))*Math.exp(0.24*randn()-0.03));
+      var atc=Math.min(clicks,Math.round(orders*2.4+clicks*0.03));
+      A[o]=spend;A[o+1]=imp;A[o+2]=clicks;A[o+3]=atc;A[o+4]=orders;A[o+5]=rev;
+    }
+  }
+})();
+
+/* ---------- aggregation ---------- */
+function zero(){return{spend:0,imp:0,clicks:0,atc:0,orders:0,rev:0,pOrders:0,pRev:0}}
+function addCell(m,A,o,paid){m.spend+=A[o];m.imp+=A[o+1];m.clicks+=A[o+2];m.atc+=A[o+3];m.orders+=A[o+4];m.rev+=A[o+5];if(paid){m.pOrders+=A[o+4];m.pRev+=A[o+5]}}
+function derive(m){
+  m.roas=div(m.pRev,m.spend);m.cpa=div(m.spend,m.pOrders);m.aov=div(m.rev,m.orders);
+  m.ctr=div(m.clicks,m.imp);m.cvr=div(m.orders,m.clicks);return m;
+}
+function aggregate(a,b,sel){
+  var tot=zero(),byCh=CH.map(zero),byCp=CP.map(zero),daily=[];
+  for(var d=a;d<=b;d++){
+    var dm=zero();
+    for(var c=0;c<CP.length;c++){
+      var ci=CHI[CP[c].ch];if(!sel[CP[c].ch])continue;
+      var paid=CH[ci].paid,o=d*F,A=DATA[c];
+      addCell(dm,A,o,paid);addCell(byCh[ci],A,o,paid);addCell(byCp[c],A,o,paid);
+    }
+    daily.push(derive(dm));
+    for(var k in dm)if(k in tot&&typeof tot[k]==='number'&&['roas','cpa','aov','ctr','cvr'].indexOf(k)<0)tot[k]+=dm[k];
+  }
+  byCh.forEach(derive);byCp.forEach(derive);
+  return{tot:derive(tot),byCh:byCh,byCp:byCp,daily:daily};
+}
+
+/* ---------- state ---------- */
+var LAST=N-1, FIRST=PRE;
+var PERIODS=[
+  {id:'d7', label:'آخر ٧ أيام', a:LAST-6, b:LAST},
+  {id:'d30',label:'آخر ٣٠ يوم', a:LAST-29,b:LAST},
+  {id:'d90',label:'آخر ٩٠ يوم', a:FIRST,  b:LAST},
+  {sep:true},
+  {id:'aug',label:'أغسطس', a:idxOf(7,1),b:idxOf(7,31)},
+  {id:'sep',label:'سبتمبر',a:idxOf(8,1),b:idxOf(8,30)},
+  {id:'oct',label:'أكتوبر',a:idxOf(9,1),b:LAST}
+];
+var state={period:'d90',sel:{},sort:{key:'rev',dir:-1},cur:null,prev:null,range:null};
+CH.forEach(function(c){state.sel[c.id]=true});
+
+/* ---------- theme ---------- */
+var root=document.documentElement;
+var SUN='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.900l1.4 1.400M17.7 17.700l1.4 1.400M2 12h2M20 12h2M4.9 19.100l1.4-1.400M17.7 6.300l1.4-1.4"/>';
+var MOON='<path d="M20 14.500A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.500z"/>';
+function setTheme(t){
+  root.setAttribute('data-theme',t);
+  $('themeIcon').innerHTML=t==='dark'?SUN:MOON;
+  $('themeTxt').textContent=t==='dark'?'الوضع الفاتح':'الوضع الداكن';
+  $('themeBtn').setAttribute('aria-pressed',t==='dark');
+}
+var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+setTheme(mq&&mq.matches?'dark':'light');
+$('themeBtn').addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+
+/* ---------- filters UI ---------- */
+function buildFilters(){
+  var h='';
+  PERIODS.forEach(function(p){h+=p.sep?'<span class="sep" aria-hidden="true"></span>':'<button type="button" data-p="'+p.id+'">'+p.label+'</button>'});
+  $('periods').innerHTML=h;
+  $('periods').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;state.period=b.dataset.p;update()});
+  h='<button type="button" class="chip all" data-ch="*">كل القنوات</button>';
+  CH.forEach(function(c){h+='<button type="button" class="chip" data-ch="'+c.id+'" style="--c:var(--'+c.color+')"><i></i>'+c.name+'</button>'});
+  $('chips').innerHTML=h;
+  $('chips').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;var id=b.dataset.ch;
+    var on=CH.filter(function(c){return state.sel[c.id]});
+    if(id==='*'){CH.forEach(function(c){state.sel[c.id]=true})}
+    else if(state.sel[id]&&on.length===1){return}                 // keep at least one channel
+    else state.sel[id]=!state.sel[id];
+    update();
+  });
+}
+function syncFilters(){
+  [].forEach.call($('periods').querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',b.dataset.p===state.period)});
+  var all=CH.every(function(c){return state.sel[c.id]});
+  [].forEach.call($('chips').querySelectorAll('button'),function(b){
+    var id=b.dataset.ch;b.setAttribute('aria-pressed',id==='*'?all:!!state.sel[id]);
+  });
+}
+
+/* ---------- KPI cards ---------- */
+var KPIS=[
+  {key:'spend', label:'الإنفاق',        unit:'ر.س', fmt:fMoney, good:0},
+  {key:'rev',   label:'المبيعات',       unit:'ر.س', fmt:fMoney, good:1},
+  {key:'roas',  label:'العائد على الإنفاق', note:'ROAS', fmt:null, good:1},
+  {key:'orders',label:'الطلبات',        unit:'طلب', fmt:fInt,   good:1},
+  {key:'cpa',   label:'تكلفة الطلب',    note:'CPA', unit:'ر.س', fmt:function(v){return v==null?'—':fDec(v,1)}, good:-1},
+  {key:'aov',   label:'متوسط السلة',    unit:'ر.س', fmt:function(v){return v==null?'—':fInt(v)}, good:1}
+];
+function change(cur,prev){return(cur==null||prev==null||prev===0)?null:(cur-prev)/prev}
+function deltaHTML(ch,good){
+  if(ch==null)return'<span class="delta flat">لا مقارنة</span>';
+  var up=ch>0, flat=Math.abs(ch)<0.0005;
+  var cls=flat||good===0?'flat':((up?1:-1)*good>0?'good':'bad');
+  var word=flat?'بدون تغيّر':(up?'ارتفاع':'انخفاض');
+  return'<span class="delta '+cls+'" title="'+word+'"><span class="ar" aria-hidden="true">'+(flat?'●':up?'▲':'▼')+'</span><span class="sr">'+fPct(Math.abs(ch))+'</span></span>';
+}
+function buckets(daily,key){
+  var n=daily.length,size=Math.ceil(n/30),out=[];
+  for(var i=0;i<n;i+=size){
+    var m=zero();
+    for(var j=i;j<Math.min(n,i+size);j++){var s=daily[j];for(var k in m)m[k]+=s[k]}
+    derive(m);out.push(m[key]);
+  }
+  return out;
+}
+function sparkSVG(vals,cls){
+  var v=vals.map(function(x){return x==null?0:x}),W=120,H=34,p=3;
+  var mn=Math.min.apply(null,v),mx=Math.max.apply(null,v);if(mx===mn){mx=mn+1}
+  var pts=v.map(function(y,i){return[(v.length>1?i/(v.length-1):.5)*W,H-p-(y-mn)/(mx-mn)*(H-2*p)]});
+  var line=pts.map(function(q,i){return(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}).join('');
+  var col=cls==='good'?cssVar('good'):cls==='bad'?cssVar('bad'):cssVar('ink-3');
+  return'<svg class="spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'+
+    '<path d="'+line+'L'+W+' '+H+'L0 '+H+'Z" fill="'+col+'" opacity=".10"/>'+
+    '<path d="'+line+'" fill="none" stroke="'+col+'" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>';
+}
+function renderKPIs(){
+  var c=state.cur.tot,p=state.prev.tot,h='';
+  KPIS.forEach(function(k){
+    var v=c[k.key],ch=change(v,p[k.key]);
+    var cls=(ch==null||k.good===0||Math.abs(ch)<0.0005)?'flat':((ch>0?1:-1)*k.good>0?'good':'bad');
+    var val=k.key==='roas'?fRoas(v):'<span>'+k.fmt(v)+'</span>'+(v==null?'':'<small>'+k.unit+'</small>');
+    h+='<article class="kpi" data-kpi="'+k.key+'"><div class="kpi-l"><span>'+k.label+'</span>'+(k.note?'<em dir="ltr">'+k.note+'</em>':'')+'</div>'+
+      '<div class="kpi-v" data-val>'+val+'</div>'+
+      '<div class="kpi-d">'+deltaHTML(ch,k.good)+'<span>عن الفترة السابقة</span></div>'+
+      sparkSVG(buckets(state.cur.daily,k.key),cls)+'</article>';
+  });
+  $('kpis').innerHTML=h;
+}
+
+/* ---------- SVG utils ---------- */
+function niceStep(v){if(v<=0)return 1;var e=Math.pow(10,Math.floor(Math.log10(v))),f=v/e;return(f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*e}
+function niceMax(v){if(v<=0)return 1;var e=Math.pow(10,Math.floor(Math.log10(v))),f=v/e;var n=f<=1?1:f<=1.5?1.5:f<=2?2:f<=3?3:f<=4?4:f<=5?5:f<=6?6:f<=8?8:10;return n*e}
+function T(x,y,txt,anchor,cls,extra){return'<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" text-anchor="'+(anchor||'start')+'"'+(cls?' class="'+cls+'"':'')+(extra||'')+'>'+esc(txt)+'</text>'}
+
+/* ---------- main chart ---------- */
+var mainGeom=null;
+function renderMain(){
+  var svg=$('mainChart'),W=Math.max(280,Math.floor($('mainBox').clientWidth)),small=W<520,H=small?250:330;
+  var m={l:small?44:54,r:10,t:22,b:30},pw=W-m.l-m.r,ph=H-m.t-m.b;
+  var d=state.cur.daily,n=d.length,a=state.range.a;
+  var maxV=0;d.forEach(function(s){maxV=Math.max(maxV,s.rev,s.spend)});
+  var stp=niceStep(maxV/4),ticks=Math.max(1,Math.ceil(maxV*1.02/stp)),top=stp*ticks;
+  var X=function(i){return m.l+(n>1?i/(n-1):.5)*pw},Y=function(v){return m.t+ph-(v/top)*ph};
+  var s='';
+  for(var i=0;i<=ticks;i++){
+    var v=top*i/ticks,y=Y(v);
+    s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y+'" y2="'+y+'" stroke="'+cssVar(i?'line-2':'line')+'" stroke-width="1"/>';
+    s+=T(m.l-8,y+4,fAxis(v),'end');
+  }
+  // x labels
+  var maxLab=Math.max(2,Math.floor(pw/(small?74:92))),step=1,cand=[1,2,3,5,7,10,14,15,30];
+  for(var q=0;q<cand.length;q++){step=cand[q];if(Math.ceil(n/step)<=maxLab)break}
+  for(i=n-1;i>=0;i-=step){
+    var anchor=i===n-1?'end':(i<step&&X(i)-m.l<30?'start':'middle');
+    s+=T(X(i),H-8,fDate(a+i),anchor);
+    s+='<line x1="'+X(i)+'" x2="'+X(i)+'" y1="'+(m.t+ph)+'" y2="'+(m.t+ph+4)+'" stroke="'+cssVar('line')+'"/>';
+  }
+  // National Day marker
+  if(NAT>=a&&NAT<=state.range.b){
+    var nx=X(NAT-a),lblLeft=nx>W-m.r-120;
+    s+='<line x1="'+nx+'" x2="'+nx+'" y1="'+(m.t-6)+'" y2="'+(m.t+ph)+'" stroke="'+cssVar('accent')+'" stroke-width="1" stroke-dasharray="3 4" opacity=".55"/>';
+    s+=T(nx+(lblLeft?-7:7),m.t-8,'اليوم الوطني · ٢٣ سبتمبر',lblLeft?'end':'start','mid',' style="font-size:11.500px"');
+  }
+  var rp='',sp='';
+  d.forEach(function(p,i){rp+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(p.rev).toFixed(1);sp+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(p.spend).toFixed(1)});
+  s+='<defs><linearGradient id="gRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+cssVar('accent')+'" stop-opacity=".26"/><stop offset="1" stop-color="'+cssVar('accent')+'" stop-opacity=".02"/></linearGradient></defs>';
+  s+='<path d="'+rp+'L'+X(n-1).toFixed(1)+' '+Y(0)+'L'+X(0).toFixed(1)+' '+Y(0)+'Z" fill="url(#gRev)"/>';
+  s+='<path d="'+rp+'" fill="none" stroke="'+cssVar('accent')+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+  s+='<path d="'+sp+'" fill="none" stroke="'+cssVar('spend')+'" stroke-width="1.8" stroke-dasharray="5 4" stroke-linejoin="round"/>';
+  if(n<=31)d.forEach(function(p,i){s+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p.rev).toFixed(1)+'" r="'+(n<=10?4:2.6)+'" fill="'+cssVar('accent')+'" stroke="'+cssVar('card')+'" stroke-width="1.5"/>'});
+  s+='<g id="hov" style="display:none"><line id="hLine" y1="'+m.t+'" y2="'+(m.t+ph)+'" stroke="'+cssVar('ink-3')+'" stroke-width="1"/>'+
+     '<circle id="hRev" r="5" fill="'+cssVar('accent')+'" stroke="'+cssVar('card')+'" stroke-width="2"/>'+
+     '<circle id="hSp" r="4.5" fill="'+cssVar('spend')+'" stroke="'+cssVar('card')+'" stroke-width="2"/></g>';
+  s+='<rect id="hit" x="'+m.l+'" y="'+m.t+'" width="'+pw+'" height="'+ph+'" fill="transparent"/>';
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('height',H);svg.style.height=H+'px';
+  svg.innerHTML=s;
+  mainGeom={W:W,H:H,m:m,pw:pw,n:n,X:X,Y:Y};
+  hideTip();
+}
+function showTip(clientX){
+  var g=mainGeom;if(!g)return;
+  var box=$('mainBox').getBoundingClientRect(),x=clientX-box.left;
+  var i=Math.round((x-g.m.l)/g.pw*(g.n-1));i=Math.max(0,Math.min(g.n-1,i));
+  var p=state.cur.daily[i],px=g.X(i);
+  $('hov').style.display='';
+  $('hLine').setAttribute('x1',px);$('hLine').setAttribute('x2',px);
+  $('hRev').setAttribute('cx',px);$('hRev').setAttribute('cy',g.Y(p.rev));
+  $('hSp').setAttribute('cx',px);$('hSp').setAttribute('cy',g.Y(p.spend));
+  var tip=$('tip');
+  tip.innerHTML='<b>'+fDate(state.range.a+i,true)+'</b>'+
+    '<div><span><i style="--c:var(--accent)"></i>المبيعات</span><strong>'+fInt(p.rev)+' ر.س</strong></div>'+
+    '<div><span><i style="--c:var(--spend)"></i>الإنفاق</span><strong>'+fInt(p.spend)+' ر.س</strong></div>'+
+    '<div><span>العائد على الإنفاق</span><strong>'+fRoas(p.roas)+'</strong></div>'+
+    '<div><span>الطلبات</span><strong>'+fInt(p.orders)+'</strong></div>';
+  var tw=tip.offsetWidth,left=px+14;if(left+tw>g.W-4)left=px-14-tw;if(left<0)left=Math.max(0,Math.min(g.W-tw,px-tw/2));
+  tip.style.transform='translate('+left.toFixed(0)+'px,'+(g.m.t+6)+'px)';
+  tip.classList.add('on');
+  tip.dataset.i=i;
+}
+function hideTip(){var h=$('hov');if(h)h.style.display='none';$('tip').classList.remove('on')}
+(function bindTip(){
+  var box=$('mainBox');
+  function inside(e){var g=mainGeom;if(!g)return false;var r=box.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;return x>=g.m.l-10&&x<=g.W-g.m.r+10&&y>=0&&y<=g.H}
+  box.addEventListener('pointermove',function(e){if(inside(e))showTip(e.clientX);else if(e.pointerType==='mouse')hideTip()});
+  box.addEventListener('pointerdown',function(e){if(inside(e))showTip(e.clientX)});
+  box.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')hideTip()});
+  document.addEventListener('pointerdown',function(e){if(!box.contains(e.target))hideTip()});
+})();
+
+/* ---------- ROAS bars (grow right-to-left) ---------- */
+function renderRoas(){
+  var svg=$('roasChart'),W=Math.max(240,Math.floor(svg.parentNode.clientWidth-40));
+  var rows=CH.filter(function(c){return state.sel[c.id]}),rowH=46,top=26,H=top+rows.length*rowH+4;
+  var labW=104,valW=52,x0=W-labW-8,maxLen=x0-valW;
+  var mx=0;rows.forEach(function(c){var r=state.cur.byCh[CHI[c.id]].roas;if(r!=null)mx=Math.max(mx,r)});
+  if(mx<=0)mx=1;
+  var s='<line x1="'+x0+'" x2="'+x0+'" y1="'+(top-4)+'" y2="'+(H-4)+'" stroke="'+cssVar('line')+'"/>';
+  var avg=state.cur.tot.roas;
+  if(avg!=null&&rows.filter(function(c){return c.paid}).length>1){
+    var ax=x0-avg/mx*maxLen;
+    s+='<line x1="'+ax+'" x2="'+ax+'" y1="'+(top-6)+'" y2="'+(H-4)+'" stroke="'+cssVar('ink-2')+'" stroke-dasharray="3 3" stroke-width="1"/>';
+    s+=T(Math.max(60,ax),top-11,rtl('متوسط المدفوع '+ltrIso(fRoasTxt(avg))),'middle',null,' style="font-size:11.500px"');
+  }
+  rows.forEach(function(c,i){
+    var r=state.cur.byCh[CHI[c.id]].roas,y=top+i*rowH+rowH/2;
+    s+=T(W,y+4.5,c.short,'end','mid',' style="font-size:13px"');
+    if(r==null){s+=T(x0-10,y+4.5,'بدون إنفاق إعلاني','end','halo',' style="font-size:12px"');return}
+    var len=Math.max(4,r/mx*maxLen);
+    s+='<path d="M'+x0+' '+(y-10)+'H'+(x0-len+4)+'a4 4 0 0 0 -4 4v12a4 4 0 0 0 4 4H'+x0+'Z" fill="'+cssVar(c.color)+'"><title>'+esc(c.name+' — '+fRoasTxt(r))+'</title></path>';
+    s+=T(x0-len-8,y+4.5,fRoasTxt(r),'end','strong halo',' style="font-size:13px"');
+  });
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.style.height=H+'px';svg.innerHTML=s;
+}
+
+/* ---------- channel table ---------- */
+var COLS=[
+  {key:'name',  label:'القناة'},
+  {key:'spend', label:'الإنفاق',     f:function(m){return m.spend>0?fInt(m.spend):'<span class="dim">٠</span>'}},
+  {key:'clicks',label:'النقرات',     f:function(m){return fInt(m.clicks)}},
+  {key:'ctr',   label:'نسبة النقر',  f:function(m){return m.ctr==null?'—':fPct(m.ctr,2)}},
+  {key:'orders',label:'الطلبات',     f:function(m){return fInt(m.orders)}},
+  {key:'cvr',   label:'نسبة التحويل',f:function(m){return m.cvr==null?'—':fPct(m.cvr,2)}},
+  {key:'cpa',   label:'تكلفة الطلب', f:function(m){return m.cpa==null?'<span class="dim">—</span>':fDec(m.cpa,1)}},
+  {key:'rev',   label:'المبيعات',    f:function(m){return fInt(m.rev)}},
+  {key:'roas',  label:'العائد',      f:function(m){return fRoas(m.roas)}}
+];
+function renderChTable(){
+  var t=$('chTable'),st=state.sort,h='<tr>';
+  COLS.forEach(function(c){
+    var on=st.key===c.key;
+    h+='<th scope="col"'+(on?' aria-sort="'+(st.dir>0?'ascending':'descending')+'"':'')+'><button type="button" data-k="'+c.key+'">'+c.label+'<span class="sa" aria-hidden="true">'+(on?(st.dir>0?'▲':'▼'):'▼')+'</span></button></th>';
+  });
+  t.tHead.innerHTML=h+'</tr>';
+  var rows=CH.filter(function(c){return state.sel[c.id]}).map(function(c){return{c:c,m:state.cur.byCh[CHI[c.id]]}});
+  rows.sort(function(x,y){
+    if(st.key==='name')return st.dir*x.c.name.localeCompare(y.c.name,'ar');
+    var a=x.m[st.key],b=y.m[st.key];
+    if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;   // no-value rows always last
+    return st.dir*(a-b);
+  });
+  h='';
+  rows.forEach(function(r){
+    h+='<tr data-ch="'+r.c.id+'">';
+    COLS.forEach(function(c,i){h+=i?'<td>'+c.f(r.m)+'</td>':'<td><span class="chn" style="--c:var(--'+r.c.color+')"><i></i>'+r.c.name+'</span></td>'});
+    h+='</tr>';
+  });
+  t.tBodies[0].innerHTML=h;
+  h='<tr>';COLS.forEach(function(c,i){h+=i?'<td>'+c.f(state.cur.tot)+'</td>':'<td>الإجمالي</td>'});
+  t.tFoot.innerHTML=h+'</tr>';
+}
+$('chTable').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-k]');if(!b)return;var k=b.dataset.k;
+  if(state.sort.key===k)state.sort.dir*=-1;else state.sort={key:k,dir:k==='name'||k==='cpa'?1:-1};
+  renderChTable();
+});
+
+/* ---------- funnel ---------- */
+function renderFunnel(){
+  var svg=$('funnel'),W=Math.max(240,Math.floor(svg.parentNode.clientWidth-40)),t=state.cur.tot;
+  var st=[{l:'مرات الظهور',v:t.imp},{l:'النقرات',v:t.clicks},{l:'إضافة للسلة',v:t.atc},{l:'الطلبات',v:t.orders}];
+  var stepL=['نسبة النقر','نسبة الإضافة للسلة','نسبة إتمام الطلب'];
+  var lg=function(v){return Math.log10(Math.max(v,1)+1)},mx=lg(st[0].v)||1;
+  var barH=30,txtH=22,gap=30,y=4,s='',cx=W/2,prevW=null,prevY=null;
+  st.forEach(function(x,i){
+    var w=Math.max(40,lg(x.v)/mx*W);
+    s+=T(W,y+13,x.l,'end','mid',' style="font-size:13px"');
+    s+=T(0,y+13,fInt(x.v),'start','strong',' style="font-size:14px"');
+    var by=y+txtH;
+    if(prevW!=null){
+      s+='<path d="M'+(cx-prevW/2)+' '+(prevY+barH)+'L'+(cx+prevW/2)+' '+(prevY+barH)+'L'+(cx+w/2)+' '+by+'L'+(cx-w/2)+' '+by+'Z" fill="'+cssVar('accent')+'" opacity=".10"/>';
+    }
+    s+='<rect x="'+(cx-w/2)+'" y="'+by+'" width="'+w+'" height="'+barH+'" rx="6" fill="'+cssVar('accent')+'" opacity="'+(1-i*0.17)+'"><title>'+esc(x.l+': '+fInt(x.v))+'</title></rect>';
+    prevW=w;prevY=by;y=by+barH;
+    if(i<3){
+      var r=div(st[i+1].v,x.v);
+      y+=gap;
+    }
+  });
+  // step-rate labels sit in the right margin of each gap, next to the stage title of the following row
+  var yy=4;
+  st.forEach(function(x,i){
+    if(i===0)return;
+    var r=div(x.v,st[i-1].v),rowY=4+i*(txtH+barH+gap);
+    s+=T(cx,rowY+13,rtl(stepL[i-1]+' '+(r==null?'—':fPct(r,r<0.1?2:1))),'middle','mid',' style="font-size:12px"');
+  });
+  var H=y+30,all=div(t.orders,t.imp);
+  s+='<line x1="0" x2="'+W+'" y1="'+(y+10)+'" y2="'+(y+10)+'" stroke="'+cssVar('line-2')+'"/>';
+  s+=T(W,y+29,'من الظهور إلى الطلب','end','mid',' style="font-size:12.500px"');
+  s+=T(0,y+29,all==null?'—':fPct(all,3),'start','strong',' style="font-size:13px"');
+  H=y+36;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.style.height=H+'px';svg.innerHTML=s;
+}
+
+/* ---------- campaigns ---------- */
+var RULE={roasScale:4,cpaScale:70,roasStop:2,cpaStop:130};
+function status(m){
+  if(m.roas==null||m.cpa==null)return m.spend>0?'stop':'watch';
+  if(m.roas<RULE.roasStop||m.cpa>RULE.cpaStop)return'stop';
+  if(m.roas>=RULE.roasScale&&m.cpa<=RULE.cpaScale)return'scale';
+  return'watch';
+}
+var ST={scale:'وسّع',watch:'راقب',stop:'أوقف'};
+function campaigns(){
+  var out=[];
+  CP.forEach(function(p,i){var m=state.cur.byCp[i];if(p.spend>0&&m.spend>0)out.push({p:p,m:m,st:status(m)})});
+  out.sort(function(a,b){return b.m.spend-a.m.spend});
+  return out.slice(0,8);
+}
+function renderCampaigns(){
+  var t=$('cpTable'),list=campaigns();
+  t.tHead.innerHTML='<tr><th scope="col">الحملة</th><th scope="col">الإنفاق</th><th scope="col">الطلبات</th><th scope="col">تكلفة الطلب</th><th scope="col">المبيعات</th><th scope="col">العائد</th><th scope="col">الحالة</th></tr>';
+  if(!list.length){t.tBodies[0].innerHTML='<tr><td colspan="7"><div class="empty">لا توجد حملات مدفوعة ضمن القنوات المختارة.</div></td></tr>'}
+  else{
+    var h='';
+    list.forEach(function(x){
+      var c=CH[CHI[x.p.ch]];
+      h+='<tr><td><span class="chn" style="--c:var(--'+c.color+')"><i></i>'+esc(x.p.name)+'</span></td>'+
+        '<td>'+fInt(x.m.spend)+'</td><td>'+fInt(x.m.orders)+'</td><td>'+(x.m.cpa==null?'—':fDec(x.m.cpa,1))+'</td><td>'+fInt(x.m.rev)+'</td><td>'+fRoas(x.m.roas)+'</td>'+
+        '<td><span class="st '+x.st+'"><i></i>'+ST[x.st]+'</span></td></tr>';
+    });
+    t.tBodies[0].innerHTML=h;
+  }
+  var R=function(v){return'<span dir="ltr" class="num">'+toAr(v)+'×</span>'};
+  $('rules').innerHTML='<b>قاعدة الحالة:</b>'+
+    '<span><span class="st scale"><i></i>وسّع</span><span>عائد '+R(RULE.roasScale)+' فأكثر وتكلفة طلب '+toAr(RULE.cpaScale)+' ر.س أو أقل</span></span>'+
+    '<span><span class="st stop"><i></i>أوقف</span><span>عائد أقل من '+R(RULE.roasStop)+' أو تكلفة طلب فوق '+toAr(RULE.cpaStop)+' ر.س</span></span>'+
+    '<span><span class="st watch"><i></i>راقب</span><span>ما بين الحالتين</span></span>';
+}
+
+/* ---------- insights ---------- */
+function renderInsights(){
+  var cur=state.cur,prev=state.prev,items=[];
+  var paid=CH.filter(function(c){return c.paid&&state.sel[c.id]&&cur.byCh[CHI[c.id]].roas!=null})
+    .map(function(c){return{c:c,m:cur.byCh[CHI[c.id]]}}).sort(function(a,b){return b.m.roas-a.m.roas});
+  var best=paid[0],worst=paid.length>1?paid[paid.length-1]:null;
+  if(best){
+    items.push(['الأفضل','<b>'+best.c.name+'</b> أفضل قناة في هذه الفترة بعائد '+fRoas(best.m.roas)+
+      '، يعني كل ريال إعلان رجّع تقريبًا '+fDec(best.m.roas,1)+' ريال مبيعات، وتكلفة الطلب فيها '+fDec(best.m.cpa,1)+' ر.س.']);
+  }else{
+    var w=cur.byCh[CHI.wa];
+    items.push(['الأفضل','القنوات المختارة بدون إنفاق إعلاني: <b>واتساب/مباشر</b> جاب '+fInt(w.orders)+' طلب بمبيعات '+fInt(w.rev)+' ر.س ومتوسط سلة '+(w.aov==null?'—':fInt(w.aov))+' ر.س.']);
+  }
+  if(worst){
+    var why=worst.m.cvr!=null&&worst.m.cvr<0.01?'النقرات رخيصة لكن التحويل ضعيف ('+fPct(worst.m.cvr,2)+')':'نسبة التحويل '+fPct(worst.m.cvr||0,2);
+    items.push(['الأضعف','<b>'+worst.c.name+'</b> أضعف قناة مدفوعة بعائد '+fRoas(worst.m.roas)+' وتكلفة طلب '+fDec(worst.m.cpa,1)+' ر.س؛ '+why+'.']);
+  }else if(best){
+    items.push(['ملاحظة','مختار قناة مدفوعة واحدة فقط؛ فعّل باقي القنوات من الأعلى عشان تظهر المقارنة.']);
+  }
+  // biggest change vs previous period
+  var cands=KPIS.map(function(k){return{k:k,ch:change(cur.tot[k.key],prev.tot[k.key])}}).filter(function(x){return x.ch!=null});
+  cands.sort(function(a,b){return Math.abs(b.ch)-Math.abs(a.ch)});
+  if(cands.length){
+    var x=cands[0],up=x.ch>0,fem=x.k.key==='rev'||x.k.key==='orders'||x.k.key==='cpa';
+    var verb=up?(fem?'ارتفعت':'ارتفع'):(fem?'انخفضت':'انخفض');
+    var judge=x.k.good===0?'':((up?1:-1)*x.k.good>0?' وهذا تغيّر إيجابي':' ويحتاج متابعة');
+    var fv=function(v){return x.k.key==='roas'?fRoas(v):x.k.fmt(v)+' '+x.k.unit};
+    items.push(['أكبر تغيّر','<b>'+x.k.label+'</b> '+verb+' '+fPct(Math.abs(x.ch))+' عن الفترة السابقة (من '+fv(prev.tot[x.k.key])+' إلى '+fv(cur.tot[x.k.key])+')'+judge+'.']);
+  }
+  // recommended action
+  var stops=campaigns().filter(function(c){return c.st==='stop'}),act;
+  if(worst&&best&&worst.m.roas<best.m.roas*0.6){
+    var move=Math.round(worst.m.spend*0.2/50)*50;
+    act='انقل حوالي ٢٠٪ من ميزانية <b>'+worst.c.short+'</b> ('+fInt(move)+' ر.س تقريبًا) إلى <b>'+best.c.short+'</b> وراقب تكلفة الطلب أسبوعين';
+    if(stops.length)act+='، وأوقف حملة «'+esc(stops[0].p.name.split(' · ')[0])+'» لأن عائدها '+fRoas(stops[0].m.roas);
+    act+='.';
+  }else if(stops.length){
+    act='أوقف حملة «'+esc(stops[0].p.name.split(' · ')[0])+'» (عائد '+fRoas(stops[0].m.roas)+') وحوّل ميزانيتها للحملات الموسومة «وسّع».';
+  }else if(best){
+    act='الأداء متقارب بين القنوات المختارة؛ ارفع ميزانية <b>'+best.c.short+'</b> تدريجيًا ١٠–١٥٪ يومي الخميس والجمعة لأنها أيام الذروة.';
+  }else{
+    act='جرّب حملة إعادة استهداف صغيرة لعملاء واتساب السابقين قبل نهاية الأسبوع، الخميس والجمعة أعلى أيام الطلب.';
+  }
+  items.push(['التوصية',act]);
+  $('insights').innerHTML=items.map(function(i){return'<li><span class="tag">'+i[0]+'</span><span>'+i[1]+'</span></li>'}).join('');
+}
+
+/* ---------- update ---------- */
+function update(){
+  var p=PERIODS.filter(function(x){return x.id===state.period})[0],len=p.b-p.a+1;
+  state.range={a:p.a,b:p.b,len:len};
+  state.cur=aggregate(p.a,p.b,state.sel);
+  state.prev=aggregate(p.a-len,p.a-1,state.sel);
+  $('rangeNote').innerHTML='<b>'+fDate(p.a)+' – '+fDate(p.b)+' ٢٠٢٦ · '+toAr(len)+' يومًا</b>مقارنةً بالفترة السابقة: '+fDate(p.a-len)+' – '+fDate(p.a-1);
+  syncFilters();renderKPIs();renderMain();renderInsights();renderRoas();renderChTable();renderFunnel();renderCampaigns();
+}
+buildFilters();update();
+
+var rz=null,lastW=window.innerWidth;
+window.addEventListener('resize',function(){
+  if(window.innerWidth===lastW)return;lastW=window.innerWidth;
+  clearTimeout(rz);rz=setTimeout(function(){renderMain();renderRoas();renderFunnel()},80);
+});
+
+// exposed for verification only
+window.__marsa={state:state,aggregate:aggregate,range:{first:FIRST,last:LAST}};
+})();
+</script>
+</body>
+</html>
